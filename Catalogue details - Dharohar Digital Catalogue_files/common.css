@@ -1,0 +1,15 @@
+th {
+        text-align: center;
+}
+
+.bootstrap-select.show-tick .dropdown-menu li a span.text {
+    margin-right: 34px;
+    margin-left: 10px;
+}
+
+.bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
+    position: absolute;
+    display: inline-block;
+    left: 15px;
+    top: 5px;
+}

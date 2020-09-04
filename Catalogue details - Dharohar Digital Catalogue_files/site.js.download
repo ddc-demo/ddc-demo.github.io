@@ -1,0 +1,133 @@
+﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+// for details on configuring this project to bundle and minify static web assets.
+
+// Write your JavaScript code.
+$(document).ready(function () {
+    $("input:text,form").attr("autocomplete", "off");
+    $(".devnagri").keyup(function () {
+        CheckDevnagri($(this));
+    });
+
+    $(".devnagri").keydown(function () {
+        CheckDevnagri($(this));
+    });
+})
+
+function CheckDevnagri(txtbx) {
+    txtbx.tooltip('hide');
+    var str = txtbx.val();
+    var lstchr = str.charAt(str.length - 1);
+    var charCode = lstchr.charCodeAt(0);
+    console.log(charCode);
+    if ((charCode < 2304 || charCode > 2431) && charCode != 32 && charCode != 44 && charCode != 8203 &&
+        charCode != 40 && charCode != 41 && (charCode < 48 || charCode > 57) && charCode != 45 &&
+        charCode != 63 && charCode != 47 && charCode != 92 && charCode != 46 && charCode != 10 && (charCode < 43250 || charCode > 43261))
+    {
+        txtbx.val(str.substring(0, str.length - 1));
+        txtbx.attr('title', 'Enter only devnagri text');
+        txtbx.tooltip('show');
+    }
+}
+
+function ValidateDevanagariString(str) {
+    var IsValidLanguageFlg = true;
+    for (var i = 0; i < str.length; i++) {
+        if (IsValidLanguageFlg) {
+            var strchr = str.charAt(i);
+            var charCode = strchr.charCodeAt(0);
+            if ((charCode >= 2304 && charCode <= 2431) || charCode == 32 || charCode == 44 || charCode == 8203 || charCode == 40 || charCode == 41 ||
+                (charCode >= 48 && charCode <= 57) || charCode == 45 || charCode == 63 || charCode == 47 || charCode == 92 || charCode == 46 || charCode == 10 ||
+                (charCode >= 43250 && charCode <= 43261)) {
+                IsValidLanguageFlg = true;
+            }
+            else {
+                IsValidLanguageFlg = false;
+            }
+        }
+    }
+    return IsValidLanguageFlg;
+}
+
+function sortDropDownListByText(lstName) {
+    $("#" + lstName).each(function () {
+        var selectedValue = $(this).val();
+        $(this).html($("option", $(this)).sort(function (a, b) {
+            return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+        }));
+        $(this).val(selectedValue);
+    });
+}
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "header")) {
+        // if present, the header is where you move the DIV from:
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    } else {
+        // otherwise, move the DIV from anywhere inside the DIV:
+        elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+
+function DisplayResolutionDPI(resolutionDPI) {
+    if (resolutionDPI == "") {
+        $("#txtResolutionDPINumber").text("");
+    }
+    else {
+        var strResolutionDPINumber = "";
+        var resolutionDPIArray = resolutionDPI.split(',');
+        for (var i = 0; i < resolutionDPIArray.length; i++) {
+            separator = strResolutionDPINumber == "" ? "" : ", ";
+            var itemResolutionDPINumber = resolutionDPIArray[i].match(/(\d+)/);
+            if (i % 2 == 0) {
+                strResolutionDPINumber = strResolutionDPINumber + "<tr><td style='padding:0.1rem;'>" + (itemResolutionDPINumber[0] + " X " + itemResolutionDPINumber[1]) + "</td></tr>";
+            }
+        }
+        $("#txtResolutionDPINumber").html("<table style='width:100%;border-style:hidden;'>" + strResolutionDPINumber + "</table>");
+    }
+}
+
+function FormatImageAvgSize(sizedata) {
+    var formatsizedata = parseInt(sizedata).toLocaleString();
+    $("#txtAvgSize").text(formatsizedata);
+}
+
+function DisablePreviousSelectedOptionsInDropdownList(dropdownlistid, disableprop) {
+    var SelectedOptions = $('#' + dropdownlistid + ' option').filter(function () {
+        return $(this).is(':selected');
+    });
+
+    SelectedOptions.each(function () {
+        $('option[value="' + $(this).val() + '"]').prop('disabled', disableprop);
+    });
+}

@@ -1115,62 +1115,6 @@ Settlement                </div>
         max-width: 600px;
     }
 </style>
-
-<script>
-    $(document).ready(function () {
-        DisplayResolutionDPI("X Resolution (in dpi): 72, Y Resolution (in dpi): 72");
-        FormatImageAvgSize("3109.888");
-    });
-
-    $('[data-toggle="popoverLexiconAuthor"]').popover({
-        trigger: "hover",
-        content: $("#divLexiconAuthor").html(),
-        html: true,
-        placement: 'bottom'
-    });
-
-    $('[data-toggle="popoverLexiconCommentator"]').popover({
-        trigger: "hover",
-        content: $("#divLexiconCommentator").html(),
-        html: true,
-        placement: 'bottom'
-    });
-
-    $('[data-toggle="popoverLexiconKriti"]').popover({
-        trigger: "hover",
-        content: $("#divLexiconKriti").html(),
-        html: true,
-        placement: 'bottom'
-    });
-
-    $('[data-toggle="popoverLexiconGivenTitle"]').popover({
-        trigger: "hover",
-        content: $("#divLexiconGivenTitle").html(),
-        html: true,
-        placement: 'bottom'
-    });
-
-    $('[data-toggle="popoverLexiconKeyword"]').popover({
-        trigger: "hover",
-        content: $("#divLexiconKeyword").html(),
-        html: true,
-        placement: 'bottom'
-    });
-
-    $('[data-toggle="popoverLexiconSubject"]').popover({
-        trigger: "hover",
-        content: $("#divLexiconSubject").html(),
-        html: true,
-        placement: 'bottom'
-    });
-
-    $('[data-toggle="popoverLexiconPlace"]').popover({
-        trigger: "hover",
-        content: $("#divLexiconPlace").html(),
-        html: true,
-        placement: 'bottom'
-    });
-</script>
         </main>
     </div>
 
@@ -1179,54 +1123,4 @@ Settlement                </div>
             © 2020 - Dharohar Digital Catalogue - <a href="http://192.168.102.40:81/Catalogue/GetDetails?uid=C00000004">Privacy</a> | v1.0.0.11
         </div>
     </footer>
-
-    
-
-
-
-<script type="text/javascript">
-    $(function () {
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "positionClass": "toast-top-right",
-            "onclick": null,
-            "showDuration": "1000",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
-        var messagestatus = '';
-        var message = '';
-        if (messagestatus == "Info") {
-            toastr.info(message);
-        } else if (messagestatus == "Success") {
-            toastr.success(message);
-        } else if (messagestatus == "Error") {
-            toastr.error(message);
-        } else if (messagestatus == "Warning") {
-            toastr.warning(message);
-        }
-        $('#toastr-success').click(function () {
-            toastr.success('This is a success notification from toastr.')
-        });
-
-        $('#toastr-info').click(function () {
-            toastr.info('This is an information notification provided by toastr.')
-        });
-
-        $('#toastr-warning').click(function () {
-            toastr.warning('This is a warning notification provided by toastr.')
-        });
-
-        $('#toastr-error').click(function () {
-            toastr.error('This is an error notification provided by toastr.')
-        });
-    });
-
-    $('#' + 'Catalogue').addClass("table-active");
-</script></body></html>
+    </body></html>

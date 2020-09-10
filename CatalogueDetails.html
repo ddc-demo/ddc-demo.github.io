@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0059)http://192.168.102.40:81/Catalogue/GetDetails?uid=C00000004 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,67 +30,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <div style="margin-right:15px;">Dharohar Digital Catalogue</div>
-                    <div id="horizontalmenu" class="navbar-collapse collapse d-sm-inline-flex">
-                        <ul>
-                                <li id="Home">
-                                    <a href="http://192.168.102.40:81/Home">Home</a>
-                                </li>
-                                                            <li id="Person">
-                                    <a href="http://192.168.102.40:81/Person/GetList">Persons</a>
-                                </li>
-                                                            <li id="Place">
-                                    <a href="http://192.168.102.40:81/Place/GetList">Places</a>
-                                </li>
-                                                            <li id="Kriti">
-                                    <a href="http://192.168.102.40:81/Kriti/GetList">Kritis / Titles</a>
-                                </li>
-                                                            <li id="Keyword">
-                                    <a href="http://192.168.102.40:81/Keyword/GetList">Keywords</a>
-                                </li>
-                                                            <li id="Subject">
-                                    <a href="http://192.168.102.40:81/Subject/GetList">Subjects</a>
-                                </li>
-                                                            <li id="Image">
-                                    <a href="http://192.168.102.40:81/Image/GetList">Images</a>
-                                </li>
-                                                            <li id="Catalogue" class="table-active">
-                                    <a href="http://192.168.102.40:81/Catalogue/GetList">Catalogues</a>
-                                </li>
-                                                            <li id="Disambiguation">
-                                    <a href="http://192.168.102.40:81/Disambiguation/GetList">Disambiguation</a>
-                                </li>
-                            <li id="Search">
-                                <a href="http://192.168.102.40:81/">Search</a>
-                            </li>
-                                <li id="More">
-                                    <a href="http://192.168.102.40:81/Catalogue/GetDetails?uid=C00000004#">More</a>
-                                    <ul style="width:200px;">
-                                            <li><a href="http://192.168.102.40:81/Library/GetList">Libraries</a></li>
-                                                                                    <li><a href="http://192.168.102.40:81/NumberCode/GetList">Number codes</a></li>
-                                                                                    <li><a href="http://192.168.102.40:81/DDCLookup/GetList">DDC Lookups</a></li>
-                                                                                    <li><a href="http://192.168.102.40:81/User/GetList">Users</a></li>
-                                                                                    <li><a href="http://192.168.102.40:81/RoleRights/GetList">Role rights</a></li>
-                                                                                    <li><a href="http://192.168.102.40:81/ModifyWorkflow/ChangeReviewer">Change reviewer</a></li>
-                                                                                    <li><a href="http://192.168.102.40:81/ModifyWorkflow/ChangeCreator">Change creator</a></li>
-                                    </ul>
-                                </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="navbar-nav flex-grow-1">
-                                <li class="nav-item" style="border-right:1px solid black;">
-                                    <a class="nav-link text-dark" href="http://192.168.102.40:81/Login/ChangePassword">Change password</a>
-                                </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="index.html" onclick="clearSession()">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-            </div>
-        </nav>
+        
+            
+                
     </header>
     <div class="container">
         
@@ -103,17 +44,15 @@
     <h4>Catalogue details</h4>
     <table>
         <tbody><tr>
-            <td>
-                <strong>Cataloguer name - Pankaj Kumar Sharma</strong>
-            </td>
+            
         </tr>
     </tbody></table>
     <table class="table table-bordered">
-        </table><table class="table table-bordered" id="basicDataTable">
+        </table><table class="table table-bordered">
     <tbody><tr>
         <td colspan="12" style="padding:0px;"></td>
     </tr>
-    <tr id="basicDatatr">
+    <tr>
         <td style="width:8.3%">
             <strong>Cat ref</strong>
         </td>
@@ -435,7 +374,7 @@ Good        </td>
             <strong>Image source folder</strong>
         </td>
         <td colspan="10" style="width:49.8%">
-            \\192.168.102.101\Dharohar\ManuscriptImage\Root\VSM\VSM-10449
+            \ManuscriptImage\Root\VSM\VSM-10449
         </td>
     </tr>
 
@@ -710,9 +649,7 @@ Valid        </td>
 </tbody></table>
     
 
-    <div style="text-align:right;">
-        <a class="btn btn-secondary" href="http://192.168.102.40:81/Catalogue/GetList">Back to list</a>
-    </div>
+    
 </div>
 
 <div id="divLexiconAuthor" style="display:none;">
@@ -1119,31 +1056,6 @@ River               </div>
 </style>
         </main>
     </div>
-	
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>	
-
-	<!--Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-	 <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
-
-	<script>
-	  // web app's Firebase configuration
-	  const firebaseConfig = {
-	  apiKey: "AIzaSyCOHgBLebvYBQo93E3bYXqvFWWZlqJp6Gg",
-	  authDomain: "ddcdharohar-e36a9.firebaseapp.com",
-	  databaseURL: "https://ddcdharohar-e36a9.firebaseio.com",
-	  projectId: "ddcdharohar-e36a9",
-	  storageBucket: "ddcdharohar-e36a9.appspot.com",
-	  messagingSenderId: "179167275800",
-	  appId: "1:179167275800:web:43624e8ec5336152530c6d"
-	};
-	  // Initialize Firebase
-	  firebase.initializeApp(firebaseConfig);
-	  
-	  console.log(firebase.app().name);
-	  var defaultDatabase = firebase.database();
-	</script>
     </body></html>
 	
 	
@@ -1165,16 +1077,3 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-<script>
-	function clearSession() {
-	localStorage.clear();
-	// check if storage is cleared
-	alert('Username: ' + localStorage.getItem('username') + ', Accession No: ' + localStorage.getItem('Accession No'));
-  }
-  
-	var Row = document.getElementById("basicDatatr");
-	var Cells = Row.getElementsByTagName("td");
-	localStorage.setItem('Accession No', Cells[5].innerText);
-	alert('Username: ' + localStorage.getItem('username') + ', Accession No: ' + localStorage.getItem('Accession No'));
-</script>

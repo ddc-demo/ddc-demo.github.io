@@ -4,7 +4,7 @@
 </head>
 
 <body>   
-	<form name="loginForm" method="get" action="Details.html" align="center">
+	<form name="loginForm" align="center" method="get" action="Details.html">
     <h4>Login</h4>
         <table align="center">
 		<tr>
@@ -25,6 +25,7 @@
 		<script type="text/javascript">
 		function storeData() {
 			localStorage.setItem('username', document.getElementById("userName").value);
+			//document.location.replace("https://ddc-demo.github.io/Details.html");
 			//sessionStorage.setItem('username', document.getElementById("userName").value);
 			}
 		</script> 

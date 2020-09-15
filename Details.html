@@ -713,6 +713,7 @@ Valid        </td>
 
     <div style="text-align:right;">
         <a class="btn btn-secondary" href="http://192.168.102.40:81/Catalogue/GetList">Back to list</a>
+		<a class="btn btn-secondary" onclick="setData()">Save</a>
     </div>
 </div>
 
@@ -1122,11 +1123,11 @@ River               </div>
     </div>
 	
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>	
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
 
 	<!--Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-	 <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+	 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 
 	<script>
 	  // web app's Firebase configuration
@@ -1144,6 +1145,42 @@ River               </div>
 	  
 	  console.log(firebase.app().name);
 	  var defaultDatabase = firebase.database();
+	  var database = firebase.database();
+	  
+	  // push data in Firebase database
+	  function pushData(){
+	  var Row = document.getElementById("basicDatatr");
+	  var Cells = Row.getElementsByTagName("td");
+	  var accNo = Cells[5].innerText;
+	  var dataRef = database.ref('/').push();//Generates a new child location with a randomly generated id.
+      dataRef.set({
+		value: localStorage.getItem('username'),
+		});
+	}
+	
+	  // set data in Firebase 
+	  function setData(){
+		var dataRef = database.ref('/'+localStorage.getItem('username')+'/' + "accNo");
+		var Row = document.getElementById("basicDatatr");
+		var Cells = Row.getElementsByTagName("td");
+			var accNo = Cells[5].innerText;
+		dataRef.set({
+			value: accNo
+		});
+		var dataRef = database.ref('/'+localStorage.getItem('username')+'/' + "comment");
+		dataRef.set({
+			value: 'test remark'
+		});
+	}
+	  
+	  // get data from Firebase database
+	  function getData() {
+		  var rootRef = database.ref('/');
+		  rootRef.once('value', function(snapshot){
+		  console.log(snapshot.val());
+		  alert('value:' + snapshot.val());
+		});
+	}
 	</script>
     </body></html>
 	

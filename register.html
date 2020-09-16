@@ -1,0 +1,68 @@
+<html>
+<head><title>Register Details</title></head>
+<body>
+	<h2 align="center">Register Details</h2>
+	<div align="right"><a href="index.html" onclick="clearSession()">Logout</a></div>
+	<form name="register" method="get" action="CheckSession.html" align="center">
+		<table align="center">
+		<tr> 
+			<td> Accession Number</td>
+			<td><input type="text" id="accNum" value=""/></td>
+		</tr>
+		<tr>
+			<td> Remarks</td>
+			<td><input type="text" id="remarks" value=""/></td>
+		</tr>
+		<tr>
+			<td colspan="2"> <input id="submit" type="submit" value="Submit" onclick="saveToDatabase()"/> </td>
+		</tr>
+		</table>
+	</form>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+	<!--Add SDKs for Firebase products that you want to use
+	https://firebase.google.com/docs/web/setup#available-libraries-->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+	<script>
+		  // web app's Firebase configuration
+		  const firebaseConfig = {
+		  apiKey: "AIzaSyCOHgBLebvYBQo93E3bYXqvFWWZlqJp6Gg",
+		  authDomain: "ddcdharohar-e36a9.firebaseapp.com",
+		  databaseURL: "https://ddcdharohar-e36a9.firebaseio.com",
+		  projectId: "ddcdharohar-e36a9",
+		  storageBucket: "ddcdharohar-e36a9.appspot.com",
+		  messagingSenderId: "179167275800",
+		  appId: "1:179167275800:web:43624e8ec5336152530c6d"
+		};
+		  // Initialize Firebase
+		  firebase.initializeApp(firebaseConfig);
+	</script>
+	<script>  
+	  console.log(firebase.app().name);
+	  var database = firebase.database();
+	  
+	  // set data in Firebase 
+	  function saveToDatabase(){
+	  var accessionNum = document.getElementById("accNum");
+	  localStorage.setItem('accessionNum', accessionNum.value);
+	  var dataRef = database.ref('/').push();
+      dataRef.set({
+		'accNo': accessionNum.value,
+		'comment': document.getElementById("remarks").value,
+		'user': localStorage.getItem('username')
+		});
+		alert('Saved successfully!');
+	}
+	
+	function clearSession() {
+	localStorage.clear();
+	// check if storage is cleared
+	alert('Username: ' + localStorage.getItem('username') + ', Accession No: ' + localStorage.getItem('Accession No'));
+  }
+  
+  </script>
+</body>
+</html>
+

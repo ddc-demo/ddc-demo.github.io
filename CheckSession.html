@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>Details</title>
 	<script>
 		var uname = localStorage.getItem('username');
-		var accNo = localStorage.getItem('Accession No');
-		alert('Username: ' + uname + ', Acc No: ' + accNo);
+		var accNo = localStorage.getItem('accessionNum');
+		alert('Username: ' + uname + ', Accession No: ' + accNo);
 	</script>
 </head>
 
 <body>
-   <p> Page to test session storage. Username and Accession No are accessible from session on this page.</p>
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+	<!--Add SDKs for Firebase products that you want to use
+	https://firebase.google.com/docs/web/setup#available-libraries-->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+	<script>
+		  // web app's Firebase configuration
+		  const firebaseConfig = {
+		  apiKey: "AIzaSyCOHgBLebvYBQo93E3bYXqvFWWZlqJp6Gg",
+		  authDomain: "ddcdharohar-e36a9.firebaseapp.com",
+		  databaseURL: "https://ddcdharohar-e36a9.firebaseio.com",
+		  projectId: "ddcdharohar-e36a9",
+		  storageBucket: "ddcdharohar-e36a9.appspot.com",
+		  messagingSenderId: "179167275800",
+		  appId: "1:179167275800:web:43624e8ec5336152530c6d"
+		};
+		  // Initialize Firebase
+		  firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script>  
+	  console.log(firebase.app().name);
+	  var database = firebase.database();
+	  
+	  // get data from Firebase database
+	  function getData() {
+		  var rootRef = database.ref('/' + localStorage.getItem('username')).once('value', function(snapshot){
+			snapshot.forEach(function(data){
+			console.log(data.key);
+			console.log(data.key.value);
+		});
+	})
+	}
+	</script>
+	<div align="center"><input type="button" value="Getdata" onclick="getData()"/></div> 
+	<table align="center">
+		<tr>
+			<td> Accession No: </td>
+			<td> </td>
+		</tr>
+	</table>
 </body>
+</html>
+

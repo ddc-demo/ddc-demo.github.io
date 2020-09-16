@@ -47,7 +47,7 @@
 	  function saveToDatabase(){
 	  var accessionNum = document.getElementById("accNum");
 	  localStorage.setItem('accessionNum', accessionNum.value);
-	  var dataRef = database.ref('/').push();
+	  var dataRef = database.ref('/commentdata').push();
       dataRef.set({
 		'accNo': accessionNum.value,
 		'comment': document.getElementById("remarks").value,

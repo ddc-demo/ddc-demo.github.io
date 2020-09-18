@@ -1,31 +1,145 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+
+    <script src="./files/jquery.js.download"></script>
+    <script src="./files/jquery-ui.js.download"></script>
+    <script src="./files/bootstrap.bundle.js.download"></script>
+    <script src="./files/bootstrap-select.min.js.download"></script>
+    <script src="./files/bootstrap-datepicker.js.download"></script>
+    <script src="./files/toastr.js.download"></script>
+    <script type="text/javascript" charset="utf8" src="./files/jquery.dataTables.min.js.download"></script>
+    <script src="./files/site.js.download"></script>
+
+    <link rel="stylesheet" href="./files/bootstrap.css">
+    <link href="./files/bootstrap-select.min.css" type="text/css" rel="stylesheet">
+    <link href="./files/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./files/bootstrap-datepicker3.css" rel="stylesheet">
+    <link href="./files/jquery-ui.css" rel="stylesheet">
+    <link href="./files/toastr.css" type="text/css" rel="stylesheet">
+    <link href="./files/PagedList.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="./files/jquery.dataTables.css" rel="stylesheet">
+    <link rel="stylesheet" href="./files/site.css">
+    <link rel="stylesheet" href="./files/common.css" type="text/css">
+    <link href="./files/all.css" rel="stylesheet">
+
 </head>
-<body>   
-	<form name="loginForm" align="center" method="get" action="List.html">
-    <h4>Login</h4>
-        <table align="center">
-		<tr>
-			<td> Username: </td>
-			<td> <input id="userName" type="text" placeholder="Enter Username" value=""/> </td>
-		</tr>
-		
-		<tr>
-			<td> Password: </td>
-			<td> <input id="password" type="password" placeholder="Enter Password" value=""/> </td>
-		</tr>
-		
-		<tr>
-			<td colspan="2"> <input id="submit" type="submit" value="Submit" onclick="storeData()"/> </td>
-		</tr>
-		</table>
-	</form>
-		<script type="text/javascript">
-		function storeData() {
-			localStorage.setItem('username', document.getElementById("userName").value);
-			//document.location.replace("https://ddc-demo.github.io/Details.html");
-			}
-		</script> 
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div style="margin-right:15px;">Dharohar Digital Catalogue</div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <form name="loginForm" method="get" action="List.html">
+                <div class="container" style="width:50%;">
+                    <br />
+                    <h4>Login</h4>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <td>
+                                            User name
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                        <td>
+                                            <input autofocus="autofocus" class="form-control text-box single-line" data-val="true" data-val-maxlength="The field UserName must be a string or array type with a maximum length of &#x27;600&#x27;." data-val-maxlength-max="600" id="userName" maxlength="600" name="UserName" type="text" value="" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Password
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                        <td>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-maxlength="The field Password must be a string or array type with a maximum length of &#x27;600&#x27;." data-val-maxlength-max="600" id="password" maxlength="600" name="Password" type="password" value="" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="text-align:right;">
+                                    <input type="submit" value="Login" class="btn btn-primary" onclick="storeData()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <style>
+                .table td, .table th {
+                    padding: .75rem;
+                }
+            </style>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Dharohar Digital Catalogue - <a href="">Privacy</a>
+        </div>
+    </footer>
 </body>
 </html>
+
+<script type="text/javascript">
+    function storeData() {
+		if($("#userName").val() == "" || $("#password").val() == ""){
+			toastr-error("Please enter username and password");
+		}
+		else{
+			localStorage.setItem('username', document.getElementById("userName").value);
+		}        
+    }
+
+    $(function () {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "1000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        var messagestatus = '';
+        var message = '';
+        if (messagestatus == "Info") {
+            toastr.info(message);
+        } else if (messagestatus == "Success") {
+            toastr.success(message);
+        } else if (messagestatus == "Error") {
+            toastr.error(message);
+        } else if (messagestatus == "Warning") {
+            toastr.warning(message);
+        }
+        $('#toastr-success').click(function () {
+            toastr.success('This is a success notification from toastr.')
+        });
+
+        $('#toastr-info').click(function () {
+            toastr.info('This is an information notification provided by toastr.')
+        });
+
+        $('#toastr-warning').click(function () {
+            toastr.warning('This is a warning notification provided by toastr.')
+        });
+
+        $('#toastr-error').click(function () {
+            toastr.error('This is an error notification provided by toastr.')
+        });
+    });
+</script>

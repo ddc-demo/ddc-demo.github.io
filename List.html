@@ -1,124 +1,413 @@
 <!DOCTYPE html>
-
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuscript Customer View</title>
+    <title>Manuscripts</title>
 
+    <script src="./files/jquery.js.download"></script>
+    <script src="./files/jquery-ui.js.download"></script>
+    <script src="./files/bootstrap.bundle.js.download"></script>
+    <script src="./files/bootstrap-select.min.js.download"></script>
+    <script src="./files/bootstrap-datepicker.js.download"></script>
+    <script src="./files/toastr.js.download"></script>
+    <script type="text/javascript" charset="utf8" src="./files/jquery.dataTables.min.js.download"></script>
+    <script src="./files/jkeyboard.js.download"></script>
+    <script src="./files/site.js.download"></script>
+    <script src="./files/jquery.tablesorter.js.download"></script>
+
+    <link rel="stylesheet" href="./files/bootstrap.css">
+    <link href="./files/bootstrap-select.min.css" type="text/css" rel="stylesheet">
+    <link href="./files/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./files/bootstrap-datepicker3.css" rel="stylesheet">
+    <link href="./files/jquery-ui.css" rel="stylesheet">
+    <link href="./files/toastr.css" type="text/css" rel="stylesheet">
+    <link href="./files/PagedList.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="./files/jquery.dataTables.css" rel="stylesheet">
+    <link href="./files/jkeyboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="./files/site.css">
+    <link rel="stylesheet" href="./files/common.css" type="text/css">
+    <link href="./files/all.css" rel="stylesheet">
+    <link href="./files/theme.default.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container">
-        
-        <main role="main" class="pb-3">
-            
-<div class="container">
-    <h4>Manuscript Customer View</h4>
-    <br>
-<form autocomplete="off">        <table style="width:100%;" id="tblSearch">
-            <tbody><tr>
-                <td>
-                    <div style="display: flex; justify-content: flex-start;margin-bottom:15px;">
-                        <p>
-                            </p><div style="margin-right:1px;">
-                                <input type="text" class="form-control" id="txtSearch" name="textSearch" onkeyup="searchText()" placeholder="Search Acc No" maxlength="600" autocomplete="off">
-                            </div>
-                            
-                        <p></p>
-                    </div>
-                </td>
-            </tr>
-        </tbody></table>
-<!--<input name="__RequestVerificationToken" type="hidden" value="CfDJ8KE7-xLBncRJgQMH1HyvQH95laZq3wSEAH4hrO3P1j_r0nR67Fud-q4KNY0Xe5Yc81_w7ASbuP7ehJkseuVcSfSyTWqvnJ1ENg1vHhWZSVOyjydZFmOS6kjd_YZgk-DmhuNQ_KTzCOfw1wx3V7f58kE">--></form>    <div class="row">
-        <div class="col-md-11">
-            <div class="table-responsive">
-                <table id="dataTable" class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                Accession No
-                            </th>
-                            <th colspan="2">
-                                Paper Cat Ref
-                            </th>
-                            <th colspan="3">
-                                Title in catalogue
-                            </th>
-                            <th colspan="2">
-                                Language
-                            </th>
-                            <th colspan="2">
-                                Script
-                            </th>
-                            <th style="width:10%;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            <tr>
-                                <td>
-                                    VSM-15135
-                                </td>
-                                <td colspan="2">
-                                    7 / 0040
-                                </td>
-                                <td colspan="3">
-									नारायणोपनिषद्
-                                </td>
-                                <td colspan="2">
-                                    Sanskrit
-                                </td>
-                                <td colspan="2">
-                                    Devanagari
-                                </td>
-                                <td style="text-align:center;">
-								<a class="btn-sm fa fa-eye" href="VSM_15135.html" style="margin-right:1px;margin-bottom:1px;" target="_blank" title="View">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    VSM-2761
-                                </td>
-                                <td colspan="2">
-                                    7 / 0716
-                                </td>
-                                <td colspan="3">
-									मैत्रायणी क्रमपाठ
-                                </td>
-                                <td colspan="2">
-                                    Sanskrit
-                                </td>
-                                <td colspan="2">
-                                    Devanagari
-                                </td>
-                                <td style="text-align:center;">
-								<a class="btn-sm fa fa-eye" href="VSM_2761.html" style="margin-right:1px;margin-bottom:1px;" target="_blank" title="View">View</a></td>
-                            </tr>
-                    </tbody>
-                </table>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div style="margin-right:15px;">
+                    Dharohar Digital Catalogue
+                </div>
+				<div align="right;">
+					<a id="btnLogin" href="index.html">Login</a>
+					<div id="btnLogout">Welcome <span id="spnUser">-</span> | <a href="index.html" onclick="clearSession()">Logout</a></div>
+				</div>
             </div>
-        </div>
-    </div>
-</div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="container">
+                <h4>Manuscripts</h4>
+                <br>
+                <form>
+                    <table style="width:100%;" id="tblSearch">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; justify-content: flex-start;margin-bottom:5px;">
+                                        <p>
+                                        </p><div style="margin-right:1px;">
+                                            <input onkeyup="searchFunction()" style="width:250px;" type="text" class="form-control" id="txtSearch" name="textSearch" placeholder="Search accession number" maxlength="600" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table id="mssTable" class="table table-bordered table-hover table-striped tablesorter tablesorter-default tablesorter" role="grid">
+                                <thead>
+                                    <tr role="row" class="tablesorter-headerRow">
+                                        <th style="user-select: none;" data-column="0" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="adminTable" unselectable="on" aria-sort="none" aria-label="UID: No sort applied, activate to apply an ascending sort">
+                                            Accession No
+                                        </th>
+                                        <th>
+                                            Paper Cat Ref
+                                        </th>
+                                        <th>
+                                            Title in catalogue
+                                        </th>
+                                        <th>
+                                            Language
+                                        </th>
+                                        <th>
+                                            Script
+                                        </th>
+                                        <th class="thViewButton" style="width:10%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            VSM-2673
+                                        </td>
+                                        <td>
+                                            1 / 0719
+                                        </td>
+                                        <td>
+											मैत्रायणी क्रमपाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2673.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2761
+                                        </td>
+                                        <td>
+                                            1 / 0716
+                                        </td>
+                                        <td>
+											मैत्रायणी क्रमपाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2761.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2762
+                                        </td>
+                                        <td>
+                                            1 / 0718
+                                        </td>
+                                        <td>
+											मैत्रायणी क्रमपाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2762.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2767
+                                        </td>
+                                        <td>
+                                            1 / 0728
+                                        </td>
+                                        <td>
+											मैत्रायणी क्रम जटा पाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2767.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2772
+                                        </td>
+                                        <td>
+                                            1 / 0724
+                                        </td>
+                                        <td>
+											मैत्रायणी जटापाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2772.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2773
+                                        </td>
+                                        <td>
+                                            1 / 0723
+                                        </td>
+                                        <td>
+											मैत्रायणी जटापाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2773.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2775
+                                        </td>
+                                        <td>
+                                            1 / 0721
+                                        </td>
+                                        <td>
+											मैत्रायणी जटापाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2775.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2777
+                                        </td>
+                                        <td>
+                                            1 / 0731
+                                        </td>
+                                        <td>
+											मैत्रायणी घनपाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2777.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-2779
+                                        </td>
+                                        <td>
+                                            1 / 0734
+                                        </td>
+                                        <td>
+											मैत्रायणी पञ्चसन्धिघनपाठ
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-2779.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            VSM-422
+                                        </td>
+                                        <td>
+                                            2 / 1039
+                                        </td>
+                                        <td>
+											अग्निष्टोमसप्तहोत्रप्रयोग
+                                        </td>
+                                        <td>
+                                            Sanskrit
+                                        </td>
+                                        <td>
+                                            Devanagari
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a class="btn-sm" href="./VSM-422.html" style="margin-right:1px;margin-bottom:1px;">View</a>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            © 2020 - Dharohar Digital Catalogue - <a href="">Privacy</a>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+<style>
+    table.tablesorter tbody tr.normal-row td {
+        background: #fff;
+        color: #212529;
+    }
+
+    table.tablesorter tbody tr.alt-row td {
+        background: rgba(255, 255, 255, 0.05);
+        color: #212529;
+    }
+</style>
+
+<script type="text/javascript">
+	var username = localStorage.getItem('username');
+	if(username == null) {
+		$("#btnLogin").show();
+		$("#btnLogout").hide();
+	}
+	else {
+		$("#btnLogin").hide();
+		$("#btnLogout").show();
+		$("#spnUser").text(username);
+	}
 	
-	<script>
-	function searchText() {
-	  var searchtxt, filter, table, tr, td, i, txtValue;
-	  searchtxt = document.getElementById("txtSearch");
-	  filter = searchtxt.value.toUpperCase();
-	  table = document.getElementById("dataTable");
+	function clearSession() {
+		localStorage.clear();
+	}
+	
+    $(document).ready(function () {
+        $(function () {
+            $("#mssTable").tablesorter({
+                headerTemplate: '{content}{icon}',
+                widgets: ["zebra"],
+                widgetOptions: {
+                    zebra: ["normal-row", "alt-row"],
+                },
+                headers: {
+                    '.thViewButton': {
+                        sorter: false
+                    }
+                }
+            });
+        });
+    });
+
+    $(function () {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "1000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        var messagestatus = '';
+        var message = '';
+        if (messagestatus == "Info") {
+            toastr.info(message);
+        } else if (messagestatus == "Success") {
+            toastr.success(message);
+        } else if (messagestatus == "Error") {
+            toastr.error(message);
+        } else if (messagestatus == "Warning") {
+            toastr.warning(message);
+        }
+        $('#toastr-success').click(function () {
+            toastr.success('This is a success notification from toastr.')
+        });
+
+        $('#toastr-info').click(function () {
+            toastr.info('This is an information notification provided by toastr.')
+        });
+
+        $('#toastr-warning').click(function () {
+            toastr.warning('This is a warning notification provided by toastr.')
+        });
+
+        $('#toastr-error').click(function () {
+            toastr.error('This is an error notification provided by toastr.')
+        });
+    });
+	
+	function searchFunction() {
+	  // Declare variables
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("txtSearch");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("mssTable");
 	  tr = table.getElementsByTagName("tr");
+
+	  // Loop through all table rows, and hide those who don't match the search query
 	  for (i = 0; i < tr.length; i++) {
 		td = tr[i].getElementsByTagName("td")[0];
 		if (td) {
 		  txtValue = td.textContent || td.innerText;
 		  if (txtValue.toUpperCase().indexOf(filter) > -1) {
 			tr[i].style.display = "";
-		  } else {
+		  } 
+		  else {
 			tr[i].style.display = "none";
 		  }
-		}       
+		}
 	  }
 	}
 </script>
-
-</body></html>

@@ -38,7 +38,7 @@
 
     <div class="container">
         <main role="main" class="pb-3">
-            <form name="loginForm" method="get" action="List.html">
+            <form name="loginForm" method="get">
                 <div class="container" style="width:50%;">
                     <br />
                     <h4>Login</h4>
@@ -67,7 +67,7 @@
                                     </tr>
                                 </table>
                                 <div style="text-align:right;">
-                                    <input type="submit" value="Login" class="btn btn-primary" onclick="storeData()" />
+                                    <input type="button" value="Login" class="btn btn-primary" onclick="login()" />
                                 </div>
                             </div>
                         </div>
@@ -90,13 +90,35 @@
 </body>
 </html>
 
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
 <script type="text/javascript">
-    function storeData() {
+	const firebaseConfig = {
+		apiKey: "AIzaSyCOHgBLebvYBQo93E3bYXqvFWWZlqJp6Gg",
+		authDomain: "ddcdharohar-e36a9.firebaseapp.com",
+		databaseURL: "https://ddcdharohar-e36a9.firebaseio.com",
+		projectId: "ddcdharohar-e36a9",
+		storageBucket: "ddcdharohar-e36a9.appspot.com",
+		messagingSenderId: "179167275800",
+		appId: "1:179167275800:web:43624e8ec5336152530c6d"
+	};
+	firebase.initializeApp(firebaseConfig);	
+	var database = firebase.database();
+	
+    function login() {
 		if($("#userName").val() == "" || $("#password").val() == ""){
-			toastr-error("Please enter username and password");
+			toastr.error("Please enter username and password");
 		}
 		else{
-			localStorage.setItem('username', document.getElementById("userName").value);
+			var ref = database.ref('/users');
+			ref.orderByChild("username").equalTo($("#userName").val()).on("child_added", function(snapshot) {
+				var user_ref = database.ref('/users/' + snapshot.key);
+				ref.orderByChild("password").equalTo($("#password").val()).on("child_added", function(snapshotp) {
+					localStorage.setItem('username', document.getElementById("userName").value);
+					location.replace("List.html");
+				});
+			});
 		}        
     }
 

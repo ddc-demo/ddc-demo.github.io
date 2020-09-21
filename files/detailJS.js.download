@@ -25,6 +25,7 @@
 					'user': localStorage.getItem('username')
 				});
 				toastr.success('Saved successfully!');
+				$("#remarks").text("");
 			}
 		}
 

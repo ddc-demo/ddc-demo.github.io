@@ -1,49 +1,142 @@
 
-<!-- saved from url=(0074)http://localhost:50143/Catalogue/GetMSSCustomerReviewDetails?uid=C00000020 -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><div class="container">
+<!-- saved from url=(0074)GetMSSCustomerReviewDetails?uid=C00000020 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div style="margin-right:15px;">
+                Dharohar Digital Catalogue
+            </div>
+            <div align="right;">
+                <a id="btnLogin" href="index.html">Login</a>
+                <div id="btnLogout">Welcome <span id="spnUser">-</span> | <a href="index.html" onclick="clearSession()">Logout</a></div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
     <h4>Manuscript details</h4>
-    <table>
+    <table class="table table-bordered mt-4">
         <tbody><tr>
-            <td>
-                <strong>Cataloguer name - Divya Joshi</strong>
+            <td colspan="12" style="padding:0px;"></td>
+        </tr>
+        <tr>
+            <td style="width:8.3%">
+                <strong>Cat ref</strong>
+            </td>
+            <td style="width:8.3%">
+                2 / 1039
+            </td>
+            <td style="width:8.3%">
+                <strong>Library</strong>
+            </td>
+            <td style="width:8.3%">
+VSM            </td>
+            <td style="width:8.3%">
+                <strong>Lib Acc No</strong>
+            </td>
+            <td style="width:8.3%">
+                422
+            </td>
+            <td style="width:8.3%">
+                <strong>Source</strong>
+            </td>
+            <td colspan="2" style="width:16.6%">
+VSM            </td>
+            <td style="width:8.3%">
+                <strong>DDC UID</strong>
+            </td>
+            <td style="width:16.6%" colspan="2">
+                VSM-422
             </td>
         </tr>
     </tbody></table>
-    <table class="table table-bordered">
-        </table><table class="table table-bordered">
-    <tbody><tr>
-        <td colspan="12" style="padding:0px;"></td>
-    </tr>
-    <tr>
-        <td style="width:8.3%">
-            <strong>Cat ref</strong>
-        </td>
-        <td style="width:8.3%">
-            2 / 1039
-        </td>
-        <td style="width:8.3%">
-            <strong>Library</strong>
-        </td>
-        <td style="width:8.3%">
-VSM        </td>
-        <td style="width:8.3%">
-            <strong>Lib Acc No</strong>
-        </td>
-        <td style="width:8.3%">
-            422
-        </td>
-        <td style="width:8.3%">
-            <strong>Source</strong>
-        </td>
-        <td colspan="2" style="width:16.6%">
-VSM        </td>
-        <td style="width:8.3%">
-            <strong>DDC UID</strong>
-        </td>
-        <td style="width:16.6%" colspan="2">
-            VSM-422
-        </td>
-    </tr>
-</tbody></table>
-    
-</div></body></html>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        © 2020 - Dharohar Digital Catalogue - <a>Privacy</a>
+    </div>
+</footer>
+
+<script src="./files/jquery.js.download"></script>
+<script src="./files/jquery-ui.js.download"></script>
+<script src="./files/bootstrap.bundle.js.download"></script>
+<script src="./files/bootstrap-select.min.js.download"></script>
+<script src="./files/bootstrap-datepicker.js.download"></script>
+<script src="./files/toastr.js.download"></script>
+<script src="./files/jquery.dataTables.min.js.download"></script>
+<script src="./files/jkeyboard.js.download"></script>
+<script src="./files/site.js.download"></script>
+
+<link href="./files/bootstrap.css" rel="stylesheet">
+<link href="./files/bootstrap-select.min.css" type="text/css" rel="stylesheet">
+<link href="./files/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="./files/bootstrap-datepicker3.css" rel="stylesheet">
+<link href="./files/jquery-ui.css" rel="stylesheet">
+<link href="./files/toastr.css" type="text/css" rel="stylesheet">
+<link href="./files/PagedList.css" rel="stylesheet" type="text/css">
+<link href="./files/jquery.dataTables.css" type="text/css" rel="stylesheet">
+<link href="./files/jkeyboard.css" rel="stylesheet">
+<link href="./files/site.css" rel="stylesheet">
+<link href="./files/common.css" rel="stylesheet" type="text/css">
+<link href="./files/all.css" rel="stylesheet">
+
+<script type="text/javascript">
+    var username = localStorage.getItem('username');
+    if (username == null) {
+        $("#btnLogin").show();
+        $("#btnLogout").hide();
+    }
+    else {
+        $("#btnLogin").hide();
+        $("#btnLogout").show();
+        $("#spnUser").text(username);
+    }
+
+    function clearSession() {
+        localStorage.clear();
+    }
+
+    $(function () {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "1000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        var messagestatus = '';
+        var message = '';
+        if (messagestatus == "Info") {
+            toastr.info(message);
+        } else if (messagestatus == "Success") {
+            toastr.success(message);
+        } else if (messagestatus == "Error") {
+            toastr.error(message);
+        } else if (messagestatus == "Warning") {
+            toastr.warning(message);
+        }
+        $('#toastr-success').click(function () {
+            toastr.success('This is a success notification from toastr.')
+        });
+
+        $('#toastr-info').click(function () {
+            toastr.info('This is an information notification provided by toastr.')
+        });
+
+        $('#toastr-warning').click(function () {
+            toastr.warning('This is a warning notification provided by toastr.')
+        });
+
+        $('#toastr-error').click(function () {
+            toastr.error('This is an error notification provided by toastr.')
+        });
+    });
+</script></body></html>

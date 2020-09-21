@@ -1,20 +1,31 @@
 
-<!-- saved from url=(0074)GetMSSCustomerReviewDetails?uid=C00000031 -->
+<!-- saved from url=(0074)http://localhost:50143/Catalogue/GetMSSCustomerReviewDetails?uid=C00000031 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
             <div style="margin-right:15px;">
                 Dharohar Digital Catalogue
             </div>
-            <div align="right;">
+            <div style="text-align:right">
                 <a id="btnLogin" href="index.html">Login</a>
-                <div id="btnLogout">Welcome <span id="spnUser">-</span> | <a href="index.html" onclick="clearSession()">Logout</a></div>
+                <div id="btnLogout">
+                    Welcome <span id="spnUser">-</span> | <a href="index.html" onclick="clearSession()">Logout</a>
+                </div>
             </div>
         </div>
     </nav>
 </header>
 <div class="container">
-    <h4>Manuscript details</h4>
+    <table style="width:100%">
+        <tbody><tr>
+            <td>
+                <h4>Manuscript details</h4>
+            </td>
+            <td style="text-align:right;">
+                <a href="List.html" class="btn btn-secondary">Back</a>
+            </td>
+        </tr>
+    </tbody></table>
     <table class="table table-bordered mt-4">
         <tbody><tr>
             <td colspan="12" style="padding:0px;"></td>
@@ -46,10 +57,27 @@ VSM            </td>
                 <strong>DDC UID</strong>
             </td>
             <td style="width:16.6%" colspan="2">
-                VSM-2762
+                <span id="spnAccNo">
+                    VSM-2762
+                </span>
             </td>
         </tr>
     </tbody></table>
+    <table class="table table-bordered" id="tblRemark">
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    Remark
+                </td>
+                <td colspan="5">
+                    <textarea class="form-control" data-val="true" id="remarks" name="Remark" style="width: 100%; height: 70px;"></textarea>
+                    <div style="text-align:right;margin-top:10px;">
+                        <input type="button" value="Submit" class="btn btn-secondary" id="btnSubmit" onclick="saveToDatabase()">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <footer class="border-top footer text-muted">
@@ -57,6 +85,9 @@ VSM            </td>
         © 2020 - Dharohar Digital Catalogue
     </div>
 </footer>
+
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 
 <script src="./files/jquery.js.download"></script>
 <script src="./files/jquery-ui.js.download"></script>
@@ -67,6 +98,7 @@ VSM            </td>
 <script src="./files/jquery.dataTables.min.js.download"></script>
 <script src="./files/jkeyboard.js.download"></script>
 <script src="./files/site.js.download"></script>
+<script src="./files/detailJS.js.download"></script>
 
 <link href="./files/bootstrap.css" rel="stylesheet">
 <link href="./files/bootstrap-select.min.css" type="text/css" rel="stylesheet">
@@ -80,63 +112,4 @@ VSM            </td>
 <link href="./files/site.css" rel="stylesheet">
 <link href="./files/common.css" rel="stylesheet" type="text/css">
 <link href="./files/all.css" rel="stylesheet">
-
-<script type="text/javascript">
-    var username = localStorage.getItem('username');
-    if (username == null) {
-        $("#btnLogin").show();
-        $("#btnLogout").hide();
-    }
-    else {
-        $("#btnLogin").hide();
-        $("#btnLogout").show();
-        $("#spnUser").text(username);
-    }
-
-    function clearSession() {
-        localStorage.clear();
-    }
-
-    $(function () {
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "positionClass": "toast-top-right",
-            "onclick": null,
-            "showDuration": "1000",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
-        var messagestatus = '';
-        var message = '';
-        if (messagestatus == "Info") {
-            toastr.info(message);
-        } else if (messagestatus == "Success") {
-            toastr.success(message);
-        } else if (messagestatus == "Error") {
-            toastr.error(message);
-        } else if (messagestatus == "Warning") {
-            toastr.warning(message);
-        }
-        $('#toastr-success').click(function () {
-            toastr.success('This is a success notification from toastr.')
-        });
-
-        $('#toastr-info').click(function () {
-            toastr.info('This is an information notification provided by toastr.')
-        });
-
-        $('#toastr-warning').click(function () {
-            toastr.warning('This is a warning notification provided by toastr.')
-        });
-
-        $('#toastr-error').click(function () {
-            toastr.error('This is an error notification provided by toastr.')
-        });
-    });
-</script></body></html>
+</body></html>

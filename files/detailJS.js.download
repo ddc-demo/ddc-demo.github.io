@@ -1,0 +1,91 @@
+﻿const firebaseConfig = {
+		apiKey: "AIzaSyCOHgBLebvYBQo93E3bYXqvFWWZlqJp6Gg",
+		authDomain: "ddcdharohar-e36a9.firebaseapp.com",
+		databaseURL: "https://ddcdharohar-e36a9.firebaseio.com",
+		projectId: "ddcdharohar-e36a9",
+		storageBucket: "ddcdharohar-e36a9.appspot.com",
+		messagingSenderId: "179167275800",
+		appId: "1:179167275800:web:43624e8ec5336152530c6d"
+		};
+		
+		firebase.initializeApp(firebaseConfig);
+		
+		var database = firebase.database();
+	  
+		function saveToDatabase(){
+			if(document.getElementById("remarks").value == ""){
+				toastr.error('Please enter remark');
+			}
+			else{
+				var accessionNum = $("#spnAccNo").text().trim();
+				var dataRef = database.ref('/commentdata').push();
+				dataRef.set({
+					'accNo': accessionNum,
+					'comment': document.getElementById("remarks").value,
+					'user': localStorage.getItem('username')
+				});
+				toastr.success('Saved successfully!');
+			}
+		}
+
+	
+	
+	var username = localStorage.getItem('username');
+    if (username == null) {
+        $("#btnLogin").show();
+        $("#btnLogout").hide();
+		$("#tblRemark").hide();
+    }
+    else {
+        $("#btnLogin").hide();
+        $("#btnLogout").show();
+        $("#spnUser").text(username);
+		$("#tblRemark").show();
+    }
+
+    function clearSession() {
+        localStorage.clear();
+    }
+
+    $(function () {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "1000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        var messagestatus = '';
+        var message = '';
+        if (messagestatus == "Info") {
+            toastr.info(message);
+        } else if (messagestatus == "Success") {
+            toastr.success(message);
+        } else if (messagestatus == "Error") {
+            toastr.error(message);
+        } else if (messagestatus == "Warning") {
+            toastr.warning(message);
+        }
+        $('#toastr-success').click(function () {
+            toastr.success('This is a success notification from toastr.')
+        });
+
+        $('#toastr-info').click(function () {
+            toastr.info('This is an information notification provided by toastr.')
+        });
+
+        $('#toastr-warning').click(function () {
+            toastr.warning('This is a warning notification provided by toastr.')
+        });
+
+        $('#toastr-error').click(function () {
+            toastr.error('This is an error notification provided by toastr.')
+        });
+    });

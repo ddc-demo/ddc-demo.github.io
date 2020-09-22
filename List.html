@@ -57,9 +57,21 @@
                                 <td>
                                     <div style="display: flex; justify-content: flex-start;margin-bottom:5px;">
                                         <p>
-                                        </p><div style="margin-right:1px;">
-                                            <input onkeyup="searchFunction()" style="width:250px;" type="text" class="form-control" id="txtSearch" name="textSearch" placeholder="Search accession number" maxlength="600" autocomplete="off">
-                                        </div>
+                                        </p>
+										<table style="width:100%;">
+											<tr>
+												<td>
+													<div style="margin-right:1px;">
+														<input onkeyup="searchFunction()" style="width:300px;" type="text" class="form-control" id="txtSearch" name="textSearch" placeholder="Search accession number" maxlength="600" autocomplete="off">
+													</div>
+												</td>
+												<td style="text-align:right;">
+													<div id="divBtnComment">
+														<a id="btnComments" href="Comments.html" class="btn btn-secondary" style="display:none;">Comments</a>
+													</div>
+												</td>
+											</tr>
+										</table>
                                     </div>
                                 </td>
                             </tr>
@@ -315,6 +327,7 @@
 <script type="text/javascript">
 	var username = localStorage.getItem('username');
 	var name = localStorage.getItem('name');
+	var isadmin = localStorage.getItem('isadmin');
 	if(username == null) {
 		$("#btnLogin").show();
 		$("#btnLogout").hide();
@@ -323,6 +336,14 @@
 		$("#btnLogin").hide();
 		$("#btnLogout").show();
 		$("#spnUser").text(name);
+	}
+	
+	if(isadmin == 1){
+		$("#btnComments").show();
+	}
+	else{
+		$("#btnComments").hide();
+		$("#divBtnComment").empty();
 	}
 	
 	function clearSession() {

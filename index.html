@@ -108,7 +108,7 @@
 	
     function login() {
 		if($("#userName").val() == "" || $("#password").val() == ""){
-			toastr.error("Please enter username and password");
+			toastr.error("Enter username and password");
 		}
 		else{
 			var refusers = database.ref('/users/' + $("#userName").val());
@@ -117,6 +117,7 @@
 					if(usernamesnapshot.child("password").val() == $("#password").val()){
 						localStorage.setItem('username', document.getElementById("userName").value);
 						localStorage.setItem('name', usernamesnapshot.child("name").val());
+						localStorage.setItem('isadmin', usernamesnapshot.child("isAdmin").val());
 						location.replace("List.html");
 					}
 					else{

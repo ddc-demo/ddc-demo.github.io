@@ -111,17 +111,31 @@
 			toastr.error("Please enter username and password");
 		}
 		else{
-			var ref = database.ref('/users');
-			ref.orderByChild("username").equalTo($("#userName").val()).on("child_added", function(snapshot) {
-				var user_ref = database.ref('/users/' + snapshot.key);
-				ref.orderByChild("password").equalTo($("#password").val()).on("child_added", function(snapshotp) {
-					localStorage.setItem('username', document.getElementById("userName").value);
-					location.replace("List.html");
-				});
+			var refusers = database.ref('/users/' + $("#userName").val());
+			refusers.once("value").then(function(usernamesnapshot) {
+				if(usernamesnapshot.exists()){
+					if(usernamesnapshot.child("password").val() == $("#password").val()){
+						localStorage.setItem('username', document.getElementById("userName").value);
+						localStorage.setItem('name', usernamesnapshot.child("name").val());
+						location.replace("List.html");
+					}
+					else{
+						toastr.error("Incorrect username or password");
+					}
+				}
+				else{
+					toastr.error("Incorrect username or password");
+				}
 			});
 		}        
     }
-
+	
+	$("#password").keypress(function(event) {
+		if (event.which == 13) {
+			login();
+		}
+	});
+	
     $(function () {
         toastr.options = {
             "closeButton": true,

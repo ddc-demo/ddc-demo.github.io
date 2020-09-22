@@ -314,6 +314,7 @@
 
 <script type="text/javascript">
 	var username = localStorage.getItem('username');
+	var name = localStorage.getItem('name');
 	if(username == null) {
 		$("#btnLogin").show();
 		$("#btnLogout").hide();
@@ -321,7 +322,7 @@
 	else {
 		$("#btnLogin").hide();
 		$("#btnLogout").show();
-		$("#spnUser").text(username);
+		$("#spnUser").text(name);
 	}
 	
 	function clearSession() {

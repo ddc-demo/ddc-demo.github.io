@@ -1,115 +1,119 @@
 
-<!-- saved from url=(0074)http://localhost:50143/Catalogue/GetMSSCustomerReviewDetails?uid=C00000035 -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <div style="margin-right:15px;">
-                Dharohar Digital Catalogue
-            </div>
-            <div style="text-align:right">
-                <a id="btnLogin" href="index.html">Login</a>
-                <div id="btnLogout">
-                    Welcome <span id="spnUser">-</span> | <a href="index.html" onclick="clearSession()">Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
-<div class="container">
-    <table style="width:100%">
-        <tbody><tr>
-            <td>
-                <h4>Manuscript details</h4>
-            </td>
-            <td style="text-align:right;">
-                <a href="List.html" class="btn btn-secondary">Back</a>
-            </td>
-        </tr>
-    </tbody></table>
-    <table class="table table-bordered mt-4">
-        <tbody><tr>
-            <td colspan="12" style="padding:0px;"></td>
-        </tr>
-        <tr>
-            <td style="width:8.3%">
-                <strong>Cat ref</strong>
-            </td>
-            <td style="width:8.3%">
-                1 / 0734
-            </td>
-            <td style="width:8.3%">
-                <strong>Library</strong>
-            </td>
-            <td style="width:8.3%">
-VSM            </td>
-            <td style="width:8.3%">
-                <strong>Lib Acc No</strong>
-            </td>
-            <td style="width:8.3%">
-                2779
-            </td>
-            <td style="width:8.3%">
-                <strong>Source</strong>
-            </td>
-            <td colspan="2" style="width:16.6%">
-            </td>
-            <td style="width:8.3%">
-                <strong>DDC UID</strong>
-            </td>
-            <td style="width:16.6%" colspan="2">
-                <span id="spnAccNo">
-                    VSM-2779
-                </span>
-            </td>
-        </tr>
-    </tbody></table>
-    <table class="table table-bordered" id="tblRemark">
-        <tbody>
-            <tr>
-                <td colspan="2">
-                    Remark
-                </td>
-                <td colspan="5">
-                    <textarea class="form-control" data-val="true" id="remarks" name="Remark" style="width: 100%; height: 70px;"></textarea>
-                    <div style="text-align:right;margin-top:10px;">
-                        <input type="button" value="Submit" class="btn btn-secondary" id="btnSubmit" onclick="saveToDatabase()">
+        <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        </head>
+        <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <div style="margin-right:15px;">
+                        Dharohar Digital Catalogue
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                    <div style="text-align:right">
+                        <a id="btnLogin" href="index.html">Login</a>
+                        <div id="btnLogout">
+                            Welcome <span id="spnUser">-</span> | <a href="index.html" onclick="clearSession()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <table style="width:100%">
+                <tbody><tr>
+                    <td>
+                        <h4>Manuscript details</h4>
+                    </td>
+                    <td style="text-align:right;">
+                        <a href="List.html" class="btn btn-secondary">Back</a>
+                    </td>
+                </tr>
+            </tbody></table>
+            <table class="table table-bordered mt-4">
+                <tbody><tr>
+                    <td colspan="12" style="padding:0px;"></td>
+                </tr>
+                <tr>
+                    <td style="width:8.3%">
+                        <strong>Cat ref</strong>
+                    </td>
+                    <td style="width:8.3%">
+                        1 / 0734
+                    </td>
+                    <td style="width:8.3%">
+                        <strong>Library</strong>
+                    </td>
+                    <td style="width:8.3%">
+VSM                    </td>
+                    <td style="width:8.3%">
+                        <strong>Lib Acc No</strong>
+                    </td>
+                    <td style="width:8.3%">
+                        2779
+                    </td>
+                    <td style="width:8.3%">
+                        <strong>Source</strong>
+                    </td>
+                    <td colspan="2" style="width:16.6%">
+                    </td>
+                    <td style="width:8.3%">
+                        <strong>DDC UID</strong>
+                    </td>
+                    <td style="width:16.6%" colspan="2">
+                        <span id="spnAccNo">
+                            VSM-2779
+                        </span>
+                    </td>
+                </tr>
+            </tbody></table>
+            <table class="table table-bordered" id="tblRemark">
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            Remark
+                        </td>
+                        <td colspan="5">
+                            <textarea class="form-control" data-val="true" id="remarks" name="Remark" style="width: 100%; height: 70px;"></textarea>
+                            <div style="text-align:right;margin-top:10px;">
+                                <input type="button" value="Submit" class="btn btn-secondary" id="btnSubmit" onclick="saveToDatabase()">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        © 2020 - Dharohar Digital Catalogue
-    </div>
-</footer>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                © 2020 - Dharohar Digital Catalogue
+            </div>
+        </footer>
 
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 
-<script src="./files/jquery.js.download"></script>
-<script src="./files/jquery-ui.js.download"></script>
-<script src="./files/bootstrap.bundle.js.download"></script>
-<script src="./files/bootstrap-select.min.js.download"></script>
-<script src="./files/bootstrap-datepicker.js.download"></script>
-<script src="./files/toastr.js.download"></script>
-<script src="./files/jquery.dataTables.min.js.download"></script>
-<script src="./files/jkeyboard.js.download"></script>
-<script src="./files/site.js.download"></script>
-<script src="./files/detailJS.js.download"></script>
+        <script src="./files/jquery.js.download"></script>
+        <script src="./files/jquery-ui.js.download"></script>
+        <script src="./files/bootstrap.bundle.js.download"></script>
+        <script src="./files/bootstrap-select.min.js.download"></script>
+        <script src="./files/bootstrap-datepicker.js.download"></script>
+        <script src="./files/toastr.js.download"></script>
+        <script src="./files/jquery.dataTables.min.js.download"></script>
+        <script src="./files/jkeyboard.js.download"></script>
+        <script src="./files/site.js.download"></script>
+        <script src="./files/detailJS.js.download"></script>
 
-<link href="./files/bootstrap.css" rel="stylesheet">
-<link href="./files/bootstrap-select.min.css" type="text/css" rel="stylesheet">
-<link href="./files/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="./files/bootstrap-datepicker3.css" rel="stylesheet">
-<link href="./files/jquery-ui.css" rel="stylesheet">
-<link href="./files/toastr.css" type="text/css" rel="stylesheet">
-<link href="./files/PagedList.css" rel="stylesheet" type="text/css">
-<link href="./files/jquery.dataTables.css" type="text/css" rel="stylesheet">
-<link href="./files/jkeyboard.css" rel="stylesheet">
-<link href="./files/site.css" rel="stylesheet">
-<link href="./files/common.css" rel="stylesheet" type="text/css">
-<link href="./files/all.css" rel="stylesheet">
-</body></html>
+        <link href="./files/bootstrap.css" rel="stylesheet">
+        <link href="./files/bootstrap-select.min.css" type="text/css" rel="stylesheet">
+        <link href="./files/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <link href="./files/bootstrap-datepicker3.css" rel="stylesheet">
+        <link href="./files/jquery-ui.css" rel="stylesheet">
+        <link href="./files/toastr.css" type="text/css" rel="stylesheet">
+        <link href="./files/PagedList.css" rel="stylesheet" type="text/css">
+        <link href="./files/jquery.dataTables.css" type="text/css" rel="stylesheet">
+        <link href="./files/jkeyboard.css" rel="stylesheet">
+        <link href="./files/site.css" rel="stylesheet">
+        <link href="./files/common.css" rel="stylesheet" type="text/css">
+        <link href="./files/all.css" rel="stylesheet">
+        </body> </html>

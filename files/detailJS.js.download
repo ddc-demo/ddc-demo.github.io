@@ -17,14 +17,22 @@
 				toastr.error('Please enter remark');
 			}
 			else{
+				const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 				var accessionNum = $("#spnAccNo").text().trim();
 				var dataRef = database.ref('/commentdata').push();
 				var datetime = new Date();
+				var datetime = new Date();
+				var D = addZero(datetime.getDate());
+				var M = monthNames[datetime.getMonth()];
+				var Y = datetime.getFullYear();
+				var h = addZero(datetime.getHours());
+				var m = addZero(datetime.getMinutes());
+				var s = addZero(datetime.getSeconds());
 				dataRef.set({
 					'accNo': accessionNum,
 					'comment': document.getElementById("remarks").value,
 					'user': localStorage.getItem('username'),
-					'dateTime': datetime.toLocaleString()
+					'dateTime': (D + " " + M + " " + Y + " " + h + ":" + m + ":" + s)
 				});
 				toastr.success('Saved successfully!');
 				$("#remarks").val("");
@@ -93,3 +101,10 @@
             toastr.error('This is an error notification provided by toastr.')
         });
     });
+	
+	function addZero(i) {
+	  if (i < 10) {
+		i = "0" + i;
+	  }
+	  return i;
+	}

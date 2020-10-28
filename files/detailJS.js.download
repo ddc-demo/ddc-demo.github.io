@@ -108,3 +108,51 @@
 	  }
 	  return i;
 	}
+	
+	$('[data-toggle="popoverLexiconAuthor"]').popover({
+        trigger: "hover",
+        content: $("#divLexiconAuthor").html(),
+        html: true,
+        placement: 'bottom'
+    });
+    $('[data-toggle="popoverLexiconCommentator"]').popover({
+        trigger: "hover",
+        content: $("#divLexiconCommentator").html(),
+        html: true,
+        placement: 'bottom'
+    });
+
+    $('[data-toggle="popoverLexiconKriti"]').popover({
+        trigger: "hover",
+        content: $("#divLexiconKriti").html(),
+        html: true,
+        placement: 'bottom'
+    });
+
+    $('[data-toggle="popoverLexiconGivenTitle"]').popover({
+        trigger: "hover",
+        content: $("#divLexiconGivenTitle").html(),
+        html: true,
+        placement: 'bottom'
+    });
+
+    $('[data-toggle="popoverLexiconKeyword"]').popover({
+        trigger: "hover",
+        content: $("#divLexiconKeyword").html(),
+        html: true,
+        placement: 'bottom'
+    });
+
+    $('[data-toggle="popoverLexiconSubject"]').popover({
+        trigger: "hover",
+        content: $("#divLexiconSubject").html(),
+        html: true,
+        placement: 'bottom'
+    });
+
+    $('[data-toggle="popoverLexiconPlace"]').popover({
+        trigger: "hover",
+        content: $("#divLexiconPlace").html(),
+        html: true,
+        placement: 'bottom'
+    });
